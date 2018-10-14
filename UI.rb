@@ -11,4 +11,8 @@ class UI
 
   end
 
+  def showAverageWaitTime time
+    puts "El tiempo promedio de espera en la fila fue de #{time} minutos"
+  end
+
 end
