@@ -6,6 +6,9 @@ load 'Client.rb'
 class Simulator
   def initialize
     @inputManager = InputManager.new()
+    @customersServed = Array.new
+    @userInterface = UI.new
+    @time = 0
   end
 
   def run
@@ -130,4 +133,12 @@ class Simulator
     array.index(array.sort[0])
   end
 
+  def calculateAverageWaitTime clients
+    averageWaitTime = 0
+    clients.each do |client|
+      averageWaitTime += client.tiempoSalida - client.tiempoLlegada
+    end
+    averageWaitTime.to_f/clients.length.to_f
+  end
+  
 end
