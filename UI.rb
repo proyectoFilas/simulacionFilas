@@ -8,48 +8,38 @@ class UI
 
   #Recibe 2 arreglos, uno con las cajas registradoras y otro con las colas
   def printIteration cashRegisters, queues
-    linea1 = ""
-    linea2 = " "
-    linea3 = ""
+    line1 = ""
+    line2 = " "
     cashRegisters.each do |cashRegister|
-      linea1 += "|C| "
+      line1 += "|C| "
       if cashRegister.client != nil
-        linea2 += "#{cashRegister.client.representation}   "
+        line2 += "#{cashRegister.client.representation}   "
       else
-        linea2 += "    "
+        line2 += "    "
       end
     end
-    puts linea1
-    puts linea2
+    puts line1
+    puts line2
     puts
-    # puts queues[0].class
-    # if queues[0].class == Client
     if queues[0].class != Array
       #Se agregan espacios para centrar cola en pantalla
-      numEspacios = (linea1.length - 3)/2
-      espacios = " " * numEspacios
+      numSpaces = (line1.length - 3)/2
+      spaces = " " * numSpaces
       queues.each do |client|
-        puts espacios + "|#{client.representation}|"
+        puts spaces + "|#{client.representation}|"
       end
     else
-      # puts "holi"
-      may = mayor queues
-      # puts may
-      for i in (0...may)
-        linea = ""
+      length = higher queues
+      for i in (0...length)
+        line = ""
         for j in (0...queues.length)
-          # puts "wat?"
-          # puts queues[j][i]
-          # if queues[j][i].class != NilClass
           if queues[j][i]
-            # puts "if"
-            linea += "|#{queues[j][i].representation}| "
+            line += "|#{queues[j][i].representation}| "
           else
-            # puts "else"
-            linea += "    "
+            line += "    "
           end
         end
-        puts linea
+        puts line
       end
     end
     puts
@@ -59,7 +49,7 @@ class UI
     puts "El tiempo promedio de espera en la fila fue de #{time} minutos"
   end
 
-  def mayor queues
+  def higher queues
     arr = Array.new
     queues.each do |queue|
       arr << queue.length
