@@ -1,11 +1,11 @@
 class Client
 
   attr_reader :representation
-  attr_reader :tiempoLlegada
-  attr_accessor :tiempoSalida
+  attr_reader :arrivalTime
+  attr_accessor :exitTime
 
-  def initialize tLlegada
-    @tiempoLlegada = tLlegada
+  def initialize arrivalTime
+    @arrivalTime = arrivalTime
     @representation = generateLetter
   end
 
